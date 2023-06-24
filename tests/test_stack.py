@@ -26,3 +26,10 @@ class TestStack(unittest.TestCase):
         data = stack.pop()
         assert stack.top.data == 'data1'
         assert data == 'data2'
+
+    def test_str(self):
+        stack = Stack()
+        stack.push('data1')
+        stack.push('data2')
+        stack.push('data3')
+        assert str(stack) == f'Top: data3, size: 3'

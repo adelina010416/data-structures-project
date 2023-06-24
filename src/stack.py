@@ -13,7 +13,6 @@ class Node:
 
 class Stack:
     """Класс для стека"""
-
     def __init__(self):
         """Конструктор класса Stack"""
         self.top = None
@@ -33,4 +32,6 @@ class Stack:
 
         :return: данные удаленного элемента
         """
-        pass
+        last_node = self.top.data
+        self.top = self.top.next_node
+        return last_node

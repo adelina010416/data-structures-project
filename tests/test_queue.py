@@ -17,4 +17,18 @@ class TestQueue(unittest.TestCase):
 
     def test_str(self):
         queue = Queue()
-        assert str(queue) == "data1\ndata2\ndata3"
+        queue.enqueue('data1')
+        queue.enqueue('data2')
+        assert str(queue) == "data1\ndata2"
+
+    def test_dequeue(self):
+        queue = Queue()
+
+        queue.enqueue('data1')
+        queue.enqueue('data2')
+        queue.enqueue('data3')
+
+        assert queue.dequeue() == 'data1'
+        assert queue.dequeue() == 'data2'
+        assert queue.dequeue() == 'data3'
+        assert queue.dequeue() is None

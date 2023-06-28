@@ -13,7 +13,6 @@ class Node:
 
 class Queue:
     """Класс для очереди"""
-    all_nodes = []
 
     def __init__(self):
         """Конструктор класса Queue"""
@@ -27,7 +26,6 @@ class Queue:
         :param data: данные, которые будут добавлены в очередь
         """
         new_node = Node(data)
-        Queue.all_nodes.append(new_node.data)
         try:
             self.tail.next_node = new_node
         except AttributeError:
@@ -40,8 +38,19 @@ class Queue:
 
         :return: данные удаленного элемента
         """
-        pass
+        try:
+            deleted_node = self.head.data
+            self.head = self.head.next_node
+        except AttributeError:
+            return None
+        return deleted_node
 
     def __str__(self):
         """Магический метод для строкового представления объекта"""
-        return '\n'.join(Queue.all_nodes)
+        result = ''
+        current_node = self.head
+        while current_node is not None:
+            result += str(current_node.data) + '\n'
+            current_node = current_node.next_node
+        else:
+            return result[:-1]

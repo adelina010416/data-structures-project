@@ -16,10 +16,15 @@ class Stack:
     def __init__(self):
         """Конструктор класса Stack"""
         self.top = None
-        self.size = 0
 
     def __str__(self):
-        return f'Top: {self.top.data}, size: {self.size}'
+        result = ''
+        current_node = self.top
+        while current_node is not None:
+            result += str(current_node.data) + '\n'
+            current_node = current_node.next_node
+        else:
+            return result[:-1]
 
     def push(self, data):
         """
@@ -29,7 +34,6 @@ class Stack:
         """
         new_node = Node(data, self.top)
         self.top = new_node
-        self.size += 1
 
     def pop(self):
         """
@@ -39,5 +43,4 @@ class Stack:
         """
         last_node = self.top.data
         self.top = self.top.next_node
-        self.size -= 1
         return last_node

@@ -32,4 +32,4 @@ class TestStack(unittest.TestCase):
         stack.push('data1')
         stack.push('data2')
         stack.push('data3')
-        assert str(stack) == f'Top: data3, size: 3'
+        assert str(stack) == f'data3\ndata2\ndata1'

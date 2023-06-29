@@ -7,6 +7,8 @@ class Node:
 
         :param data: данные, которые будут храниться в узле
         """
+        if type(data) != dict or 'id' not in data.keys():
+            raise Exception("Incorrect data type")
         self.data = data
         self.next_node = next_node
 
@@ -48,3 +50,30 @@ class LinkedList:
 
         ll_string += ' None'
         return ll_string[1:]
+
+    def to_list(self):
+        """
+        Возвращает список с данными, содержащимися в односвязном списке LinkedList.
+        """
+        node = self.head
+        if node is None:
+            return str(None)
+        ll_string = []
+        while node:
+            ll_string.append(node.data)
+            node = node.next_node
+        return ll_string
+
+    def get_data_by_id(self, node_id):
+        """
+        Возвращает первый найденный в LinkedList словарь с ключом 'id',
+        значение которого равно переданному в метод значению.
+        """
+        try:
+            node_id = int(node_id)
+        except ValueError:
+            print("Incorrect data type")
+        for i in self.to_list():
+            if int(i["id"]) == node_id:
+                return i
+        return 'DataNotFound'

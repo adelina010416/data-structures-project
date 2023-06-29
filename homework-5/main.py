@@ -11,5 +11,4 @@ if __name__ == '__main__':
     ll.insert_beginning({'id': 0})
 
     # Печатаем данные
-    print(ll)
     assert str(ll) == "{'id': 0} -> {'id': 1} -> {'id': 2} -> {'id': 3} -> None"

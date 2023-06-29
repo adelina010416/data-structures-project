@@ -8,10 +8,10 @@ class TestQueue(unittest.TestCase):
         queue.enqueue('data1')
         queue.enqueue('data2')
         queue.enqueue('data3')
-        assert queue.head.data == 'data1'
-        assert queue.head.next_node.data == 'data2'
-        assert queue.tail.data == 'data3'
-        assert queue.tail.next_node is None
+        self.assertEqual(queue.head.data, 'data1')
+        self.assertEqual(queue.head.next_node.data, 'data2')
+        self.assertEqual(queue.tail.data, 'data3')
+        self.assertIs(queue.tail.next_node, None)
         with self.assertRaises(AttributeError):
             print(queue.tail.next_node.data)
 
@@ -19,7 +19,7 @@ class TestQueue(unittest.TestCase):
         queue = Queue()
         queue.enqueue('data1')
         queue.enqueue('data2')
-        assert str(queue) == "data1\ndata2"
+        self.assertEqual(str(queue), "data1\ndata2")
 
     def test_dequeue(self):
         queue = Queue()
@@ -28,7 +28,7 @@ class TestQueue(unittest.TestCase):
         queue.enqueue('data2')
         queue.enqueue('data3')
 
-        assert queue.dequeue() == 'data1'
-        assert queue.dequeue() == 'data2'
-        assert queue.dequeue() == 'data3'
-        assert queue.dequeue() is None
+        self.assertEqual(queue.dequeue(), 'data1')
+        self.assertEqual(queue.dequeue(), 'data2')
+        self.assertEqual(queue.dequeue(), 'data3')
+        self.assertIs(queue.dequeue(), None)

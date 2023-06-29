@@ -19,17 +19,17 @@ class TestStack(unittest.TestCase):
         stack = Stack()
         stack.push('data1')
         data = stack.pop()
-        assert stack.top is None
-        assert data == 'data1'
+        self.assertIs(stack.top, None)
+        self.assertEqual(data, 'data1')
         stack.push('data1')
         stack.push('data2')
         data = stack.pop()
-        assert stack.top.data == 'data1'
-        assert data == 'data2'
+        self.assertEqual(stack.top.data, 'data1')
+        self.assertEqual(data, 'data2')
 
     def test_str(self):
         stack = Stack()
         stack.push('data1')
         stack.push('data2')
         stack.push('data3')
-        assert str(stack) == f'data3\ndata2\ndata1'
+        self.assertEqual(str(stack), f'data3\ndata2\ndata1')
